@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6m5e2qdib7c6"]
+
+[ext_resource type="Texture2D" uid="uid://bdotgcc00xlss" path="res://Assets/kenney_voxel-pack/Spritesheets/spritesheet_characters.png" id="1_8v8v1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pursb"]
+
+[node name="Node2D" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_pursb")
+
+[node name="Head" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, -113)
+texture = ExtResource("1_8v8v1")
+region_enabled = true
+region_rect = Rect2(86, 146, 64, 64)
+
+[node name="Body" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, -51)
+texture = ExtResource("1_8v8v1")
+region_enabled = true
+region_rect = Rect2(210, 182, 44, 59)
