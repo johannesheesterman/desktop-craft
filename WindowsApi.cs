@@ -50,6 +50,11 @@ public static class WindowsApi
 		SetWindowLong(GetActiveWindow(), -20, WsExLayered | WsExTransparent);	
 	}
 
+	public static void DisableClickthrough()
+    {
+		SetWindowLong(GetActiveWindow(), -20, 0);
+    }
+
 	private delegate bool EnumWindowsProc(IntPtr hWnd, int lParam);
 
 	[DllImport("USER32.DLL")]
@@ -81,7 +86,9 @@ public static class WindowsApi
 	private const uint WsExTransparent = 0x00000020;
 	[DllImport("user32.dll")]
 	private static extern int SetWindowLong(IntPtr hWnd, int nIndex, uint dwNewLong);
-	
+
+  
+
 }
 
 	public enum ShowWindowCommands : int

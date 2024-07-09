@@ -1,13 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6m5e2qdib7c6"]
+[gd_scene load_steps=7 format=3 uid="uid://c6m5e2qdib7c6"]
 
 [ext_resource type="Texture2D" uid="uid://ccd2b2rq2vomd" path="res://Assets/kenney_voxel-pack/PNG/Characters/Player male/male_head.png" id="1_15mtx"]
+[ext_resource type="Script" path="res://player.cs" id="1_stlno"]
 [ext_resource type="Texture2D" uid="uid://drbq5wu2gpvu2" path="res://Assets/kenney_voxel-pack/PNG/Characters/Player male/male_leg.png" id="1_ttve8"]
 [ext_resource type="Texture2D" uid="uid://bgnpeh1awd26w" path="res://Assets/kenney_voxel-pack/PNG/Characters/Player male/male_body.png" id="2_j03py"]
 [ext_resource type="Texture2D" uid="uid://bsytt2rycuec8" path="res://Assets/kenney_voxel-pack/PNG/Characters/Player male/male_arm.png" id="4_qqddr"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5cai8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4idj"]
+size = Vector2(64, 160)
 
 [node name="Node2D" type="CharacterBody2D"]
+script = ExtResource("1_stlno")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -80)
+shape = SubResource("RectangleShape2D_h4idj")
 
 [node name="Leg1" type="Sprite2D" parent="."]
 position = Vector2(-0.999996, -19)
@@ -35,7 +42,3 @@ region_rect = Rect2(86, 146, 64, 64)
 position = Vector2(-4, -76)
 scale = Vector2(0.607143, 0.607143)
 texture = ExtResource("4_qqddr")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("RectangleShape2D_5cai8")

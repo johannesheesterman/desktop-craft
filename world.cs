@@ -5,8 +5,6 @@ public partial class world : Node2D
 {
 	private RECT screenSize;
 
-
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		screenSize = WindowsApi.GetScreenSize();
@@ -20,11 +18,9 @@ public partial class world : Node2D
 			screenSize.Left,
 			screenSize.Top);
 
-		// window.Borderless = true;
-		// window.AlwaysOnTop = true;
-		// window.TransparentBg = true;
-
 		WindowsApi.EnableClickthrough();
+
+		AddFloorCollision();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,5 +34,27 @@ public partial class world : Node2D
 		var mousePos = DisplayServer.MouseGetPosition();
 		return mousePos.X >= screenSize.Left && mousePos.X <= screenSize.Right &&
 			mousePos.Y >= screenSize.Top && mousePos.Y <= screenSize.Bottom;
+	}
+
+	private void AddFloorCollision()
+	{
+		var viewport = GetViewportRect();
+		GD.Print(GetViewportRect().Size);
+
+		var floor = new StaticBody2D();
+		floor.Name = "Floor";
+
+		var collision = new CollisionShape2D();
+		floor.AddChild(collision);
+
+        var shape = new RectangleShape2D
+        {
+            Size = new Vector2(  viewport.Size.X, 10)
+        };
+        collision.Shape = shape;
+
+		floor.Position = new Vector2(0,  viewport.End.Y/ 2);
+
+		AddChild(floor);
 	}
 }
