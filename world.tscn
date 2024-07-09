@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://bw4vapoublicg"]
+[gd_scene load_steps=2 format=3 uid="uid://bw4vapoublicg"]
+
+[ext_resource type="PackedScene" uid="uid://c6m5e2qdib7c6" path="res://player.tscn" id="1_8yq6q"]
 
 [node name="World" type="Node2D"]
+
+[node name="Node2D" parent="." instance=ExtResource("1_8yq6q")]
+
+[node name="Camera2D" type="Camera2D" parent="."]

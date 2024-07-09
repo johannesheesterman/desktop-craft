@@ -1,24 +1,41 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6m5e2qdib7c6"]
+[gd_scene load_steps=6 format=3 uid="uid://c6m5e2qdib7c6"]
 
-[ext_resource type="Texture2D" uid="uid://bdotgcc00xlss" path="res://Assets/kenney_voxel-pack/Spritesheets/spritesheet_characters.png" id="1_8v8v1"]
+[ext_resource type="Texture2D" uid="uid://ccd2b2rq2vomd" path="res://Assets/kenney_voxel-pack/PNG/Characters/Player male/male_head.png" id="1_15mtx"]
+[ext_resource type="Texture2D" uid="uid://drbq5wu2gpvu2" path="res://Assets/kenney_voxel-pack/PNG/Characters/Player male/male_leg.png" id="1_ttve8"]
+[ext_resource type="Texture2D" uid="uid://bgnpeh1awd26w" path="res://Assets/kenney_voxel-pack/PNG/Characters/Player male/male_body.png" id="2_j03py"]
+[ext_resource type="Texture2D" uid="uid://bsytt2rycuec8" path="res://Assets/kenney_voxel-pack/PNG/Characters/Player male/male_arm.png" id="4_qqddr"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pursb"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5cai8"]
 
 [node name="Node2D" type="CharacterBody2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_pursb")
+[node name="Leg1" type="Sprite2D" parent="."]
+position = Vector2(-0.999996, -19)
+scale = Vector2(0.672262, 0.654405)
+texture = ExtResource("1_ttve8")
 
-[node name="Head" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(1, -113)
-texture = ExtResource("1_8v8v1")
-region_enabled = true
-region_rect = Rect2(86, 146, 64, 64)
+[node name="Leg2" type="Sprite2D" parent="."]
+position = Vector2(-1, -19)
+scale = Vector2(0.671078, 0.671078)
+texture = ExtResource("1_ttve8")
 
 [node name="Body" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1, -51)
-texture = ExtResource("1_8v8v1")
-region_enabled = true
+position = Vector2(-3, -67)
+texture = ExtResource("2_j03py")
 region_rect = Rect2(210, 182, 44, 59)
+
+[node name="Head" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-2, -128)
+texture = ExtResource("1_15mtx")
+region_rect = Rect2(86, 146, 64, 64)
+
+[node name="Arm1" type="Sprite2D" parent="."]
+position = Vector2(-4, -76)
+scale = Vector2(0.607143, 0.607143)
+texture = ExtResource("4_qqddr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_5cai8")
