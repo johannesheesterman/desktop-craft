@@ -7,6 +7,8 @@ public partial class world : Node2D
 
 	public override void _Ready()
 	{
+		if (OS.HasFeature("server")) return;
+
 		screenSize = WindowsApi.GetScreenSize();
 
 		var window = GetTree().Root.GetWindow();
@@ -26,6 +28,9 @@ public partial class world : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (OS.HasFeature("server")) return;
+
+
 		Visible = !MouseInScreen();
 	}
 

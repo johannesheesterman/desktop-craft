@@ -8,14 +8,20 @@ public partial class player : CharacterBody2D
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	private Node2D sprites;
+	private MultiplayerSynchronizer multiplayerSynchronizer;
 
 	public override void _Ready()
 	{
 		sprites = GetNode<Node2D>("Sprites");
+		multiplayerSynchronizer = GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer");
+		multiplayerSynchronizer.SetMultiplayerAuthority(Multiplayer.GetUniqueId());
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (multiplayerSynchronizer.GetMultiplayerAuthority() != Multiplayer.GetUniqueId())
+			return;
+
 		Vector2 velocity = Velocity;
 
 		// Add the gravity.
