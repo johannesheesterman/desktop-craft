@@ -5,9 +5,14 @@ public partial class player : CharacterBody2D
 {
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
-
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+	private Node2D sprites;
+
+	public override void _Ready()
+	{
+		sprites = GetNode<Node2D>("Sprites");
+	}
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -32,6 +37,15 @@ public partial class player : CharacterBody2D
 		{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 		}
+
+		// If velocity.X > 0, rotate sprite to the right.
+		if (velocity.X != 0 )
+		{
+			sprites.Scale = new Vector2(velocity.X > 0 ? -1 : 1, 1);
+		}
+		
+
+		
 
 		Velocity = velocity;
 		MoveAndSlide();

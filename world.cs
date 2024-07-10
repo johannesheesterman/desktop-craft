@@ -47,11 +47,11 @@ public partial class world : Node2D
 		var collision = new CollisionShape2D();
 		floor.AddChild(collision);
 
-        var shape = new RectangleShape2D
-        {
-            Size = new Vector2(  viewport.Size.X, 10)
-        };
-        collision.Shape = shape;
+		var shape = new RectangleShape2D
+		{
+			Size = new Vector2(  viewport.Size.X, 10)
+		};
+		collision.Shape = shape;
 
 		floor.Position = new Vector2(0,  viewport.End.Y/ 2);
 

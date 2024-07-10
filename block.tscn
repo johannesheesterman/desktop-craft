@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://beax040wtl3bl"]
+
+[ext_resource type="Texture2D" uid="uid://dyfqrgi10igik" path="res://Assets/kenney_voxel-pack/PNG/Tiles/dirt_grass.png" id="1_lma6f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bqync"]
+size = Vector2(128, 128)
+
+[node name="Block" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lma6f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bqync")
