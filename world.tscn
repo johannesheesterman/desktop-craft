@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bw4vapoublicg"]
+[gd_scene load_steps=10 format=3 uid="uid://bw4vapoublicg"]
 
 [ext_resource type="Script" path="res://world.cs" id="1_g4iia"]
+[ext_resource type="PackedScene" uid="uid://beax040wtl3bl" path="res://block.tscn" id="2_nuv47"]
+[ext_resource type="Texture2D" uid="uid://b7rp32svnnwo8" path="res://Assets/kenney_voxel-pack/PNG/Tiles/wheat_stage4.png" id="3_dnpdj"]
+[ext_resource type="Texture2D" uid="uid://0p8cgd1wc5hu" path="res://Assets/kenney_voxel-pack/PNG/Tiles/wheat_stage3.png" id="4_6bi55"]
+[ext_resource type="Texture2D" uid="uid://frvvyl51i0mr" path="res://Assets/kenney_voxel-pack/PNG/Tiles/wheat_stage2.png" id="5_881uk"]
+[ext_resource type="Texture2D" uid="uid://d0fb0i3erdurp" path="res://Assets/kenney_voxel-pack/PNG/Tiles/trunk_bottom.png" id="6_603gy"]
+[ext_resource type="Texture2D" uid="uid://dvx7h5gbuiw0i" path="res://Assets/kenney_voxel-pack/PNG/Tiles/trunk_mid.png" id="7_vgclu"]
+[ext_resource type="Texture2D" uid="uid://c6rus6y68iywe" path="res://Assets/kenney_voxel-pack/PNG/Tiles/leaves.png" id="8_cp72t"]
+[ext_resource type="Texture2D" uid="uid://bgf6fy3q5oidk" path="res://Assets/kenney_voxel-pack/PNG/Tiles/leaves_transparent.png" id="9_53xjh"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_g4iia")
@@ -8,3 +16,87 @@ script = ExtResource("1_g4iia")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Spawn" type="Node2D" parent="."]
+
+[node name="Block" parent="." instance=ExtResource("2_nuv47")]
+position = Vector2(129, -164)
+
+[node name="Block2" parent="." instance=ExtResource("2_nuv47")]
+position = Vector2(-1, -32)
+
+[node name="Block3" parent="." instance=ExtResource("2_nuv47")]
+position = Vector2(64, -97)
+
+[node name="Block5" parent="." instance=ExtResource("2_nuv47")]
+position = Vector2(194, -98)
+
+[node name="Block4" parent="." instance=ExtResource("2_nuv47")]
+position = Vector2(258, -33)
+
+[node name="WheatStage4" type="Sprite2D" parent="."]
+position = Vector2(-418, -33)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_dnpdj")
+
+[node name="WheatStage3" type="Sprite2D" parent="."]
+position = Vector2(-361, -34)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_6bi55")
+
+[node name="WheatStage2" type="Sprite2D" parent="."]
+position = Vector2(-304, -33)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_881uk")
+
+[node name="TrunkBottom" type="Sprite2D" parent="."]
+position = Vector2(434, -34)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_603gy")
+
+[node name="TrunkMid" type="Sprite2D" parent="."]
+position = Vector2(433, -97)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_vgclu")
+
+[node name="TrunkMid2" type="Sprite2D" parent="."]
+position = Vector2(433, -161)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_vgclu")
+
+[node name="TrunkMid3" type="Sprite2D" parent="."]
+position = Vector2(433, -225)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_vgclu")
+
+[node name="Leaves" type="Sprite2D" parent="."]
+position = Vector2(432, -288)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_cp72t")
+
+[node name="LeavesTransparent" type="Sprite2D" parent="."]
+position = Vector2(368, -288)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_53xjh")
+
+[node name="LeavesTransparent" type="Sprite2D" parent="LeavesTransparent"]
+position = Vector2(254, -126)
+texture = ExtResource("9_53xjh")
+
+[node name="LeavesTransparent2" type="Sprite2D" parent="."]
+position = Vector2(432, -352)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_53xjh")
+
+[node name="LeavesTransparent3" type="Sprite2D" parent="."]
+position = Vector2(495, -288)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_53xjh")
+
+[node name="LeavesTransparent4" type="Sprite2D" parent="."]
+position = Vector2(368, -352)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_53xjh")
+
+[node name="LeavesTransparent5" type="Sprite2D" parent="."]
+position = Vector2(432, -352)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_53xjh")

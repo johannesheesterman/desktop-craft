@@ -37,7 +37,7 @@ public partial class world : Node2D
 		if (OS.HasFeature("server")) return;
 
 
-		Visible = !MouseInScreen();
+		// Visible = !MouseInScreen();
 	}
 
 	private bool MouseInScreen()
