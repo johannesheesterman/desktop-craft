@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public partial class MultiplayerContext : Node
 {
-	private string _serverAddress = "127.0.0.1";
+	private string _serverAddress = "0.0.0.0";
 	private int _serverPort = 8190;
 	private ENetMultiplayerPeer _peer;
 	public List<long> PlayerIds = new List<long>();
