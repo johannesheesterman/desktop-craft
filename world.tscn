@@ -1,11 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bw4vapoublicg"]
+[gd_scene load_steps=2 format=3 uid="uid://bw4vapoublicg"]
 
 [ext_resource type="Script" path="res://world.cs" id="1_g4iia"]
-[ext_resource type="PackedScene" uid="uid://c6m5e2qdib7c6" path="res://player.tscn" id="2_rb66y"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_g4iia")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Node2D" parent="." instance=ExtResource("2_rb66y")]
+[node name="Spawn" type="Node2D" parent="."]

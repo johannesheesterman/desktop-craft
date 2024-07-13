@@ -3,6 +3,8 @@ using System;
 
 public partial class player : CharacterBody2D
 {
+	public long PlayerId { get; private set; } = -1;
+
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -14,13 +16,17 @@ public partial class player : CharacterBody2D
 	{
 		sprites = GetNode<Node2D>("Sprites");
 		multiplayerSynchronizer = GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer");
-		multiplayerSynchronizer.SetMultiplayerAuthority(Multiplayer.GetUniqueId());
+		multiplayerSynchronizer.SetMultiplayerAuthority(Convert.ToInt32(PlayerId), true);
+
+		GD.Print("PlayerId: " + PlayerId);
+		GD.Print("Multiplayer.GetUniqueId(): " + Multiplayer.GetUniqueId());
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
 		if (multiplayerSynchronizer.GetMultiplayerAuthority() != Multiplayer.GetUniqueId())
 			return;
+			
 
 		Vector2 velocity = Velocity;
 
@@ -55,5 +61,10 @@ public partial class player : CharacterBody2D
 
 		Velocity = velocity;
 		MoveAndSlide();
+	}
+
+	public void SetPlayerId(long id)
+	{
+		PlayerId = id;
 	}
 }

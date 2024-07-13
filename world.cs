@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Runtime.CompilerServices;
 
 public partial class world : Node2D
 {
@@ -23,6 +24,7 @@ public partial class world : Node2D
 		WindowsApi.EnableClickthrough();
 
 		AddFloorCollision();
+		SetupPlayerSpawn();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -61,5 +63,38 @@ public partial class world : Node2D
 		floor.Position = new Vector2(0,  viewport.End.Y/ 2);
 
 		AddChild(floor);
+	}
+
+	private void SetupPlayerSpawn()
+	{
+		var multiplayerContext = GetNode<MultiplayerContext>("/root/MultiplayerContext");		
+		Multiplayer.PeerConnected += SpawnPlayer;
+		Multiplayer.PeerDisconnected += RemovePlayer;
+
+		SpawnPlayer(Multiplayer.GetUniqueId());
+
+		foreach (var playerId in multiplayerContext.PlayerIds)
+			SpawnPlayer(playerId);
+
+	}
+
+	private void SpawnPlayer(long id)
+	{
+		if (id == 1) return;
+
+		GD.Print("Spawning player: " + id);
+		var playerScene = GD.Load<PackedScene>("res://player.tscn");
+		var player = playerScene.Instantiate<player>();
+		player.SetPlayerId(id);
+		player.Name = id.ToString();
+		AddChild(player);
+	}
+
+	private void RemovePlayer(long id)
+	{
+		GD.Print("Removing player: " + id);
+		var player = GetNodeOrNull<player>(id.ToString());
+		if (player != null)
+			player.QueueFree();
 	}
 }
