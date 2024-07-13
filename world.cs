@@ -25,6 +25,10 @@ public partial class world : Node2D
 
 		AddFloorCollision();
 		SetupPlayerSpawn();
+
+		// Get reference to camera
+		var camera = GetNode<Camera2D>("Camera2D");
+		camera.Position = new Vector2(0, -((screenSize.Bottom - screenSize.Top) / 2));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -60,7 +64,7 @@ public partial class world : Node2D
 		};
 		collision.Shape = shape;
 
-		floor.Position = new Vector2(0,  viewport.End.Y/ 2);
+		floor.Position = new Vector2(0,  0);
 
 		AddChild(floor);
 	}
